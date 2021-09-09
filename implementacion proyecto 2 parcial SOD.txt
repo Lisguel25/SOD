@@ -1,0 +1,40 @@
+Código de la Implementación:
+
+//Cambiamos el nombre de las instancias en las dos máquinas
+sudo su
+hostnamectl set-hostname efs01
+exit
+logout
+
+
+//Instalamos el servicio utils en las dos máquinas
+sudo su
+yum –y install amazon-efs-utils
+
+
+//Creamos una carpeta en la ruta establecida
+mkdir /mnt/efs
+mount –t efs –o tls fs-29e3dc9d:/ /mnt/efs
+df –h //verificamos si se monto
+
+
+//Entramos a la ruta y creamos un doc
+cd /mnt/efs
+touch hellous
+
+
+//Desde la otra maquina Verificamos
+ll /mnt/efs
+
+
+//Donde lo creamos ejecutamos el archivo y escribimos
+nano hellous
+//Escribimos un texto
+
+
+//Verificamos nuevamente de la otra mauqina
+Cat /mnt/efs/hellous
+
+
+
+
